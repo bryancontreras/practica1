@@ -269,6 +269,13 @@ void loop() {
       scale.set_scale(1.0f);
       long raw = (long)scale.get_units(10);    // promedio 10 lecturas (ya descuenta offset)
 
+      if (abs(raw) < 100) {
+        Serial.println(F("[CAL] Lectura demasiado baja. Revisa puente, cableado o peso de referencia."));
+        scale.set_scale(calibration_factor);   // restaurar factor anterior
+        estado = IDLE;
+        return;
+      }
+
       calibration_factor = (float)raw / peso_referencia;
       scale.set_scale(calibration_factor);
       calibrado = true;
