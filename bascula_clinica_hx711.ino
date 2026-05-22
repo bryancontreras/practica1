@@ -30,8 +30,10 @@
 #include <Preferences.h>
 
 // ── Pines ────────────────────────────────────────────────
-#define PIN_DT   4
-#define PIN_SCK  5
+// GPIO 32/33: propósito general, no son strapping pins → arranque estable
+// Alternativa igualmente segura: PIN_DT 25 / PIN_SCK 26
+#define PIN_DT   32
+#define PIN_SCK  33
 
 // ── Filtro de mediana ────────────────────────────────────
 #define FILTRO_N  9          // muestras para mediana (impar)
