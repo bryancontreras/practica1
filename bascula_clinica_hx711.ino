@@ -141,10 +141,11 @@ void setup() {
   delay(500);
 
   scale.begin(PIN_DT, PIN_SCK);
-  scale.set_gain(128);      // canal A, ganancia 128 (estándar para celdas de carga)
 
   if (!hx711Listo(2000)) {
     Serial.println(F("[ERROR] HX711 no responde al iniciar. Revisa cableado/alimentación."));
+  } else {
+    scale.set_gain(128);  // canal A, ganancia 128 — llama read() internamente, solo si HX711 listo
   }
 
   cargarFlash();
