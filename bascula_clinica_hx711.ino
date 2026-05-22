@@ -221,7 +221,11 @@ void loop() {
           }
 
           case 's': case 'S':
-            guardarFlash();
+            if (!calibrado) {
+              Serial.println(F("[FLASH] No se puede guardar: primero realiza tara + calibración."));
+            } else {
+              guardarFlash();
+            }
             break;
 
           case 'm': case 'M':
