@@ -14,8 +14,8 @@
   HX711 → ESP32:
       VCC → 3.3 V
       GND → GND
-      DT  → GPIO 4
-      SCK → GPIO 5
+      DT  → GPIO 32
+      SCK → GPIO 33
 
   COMANDOS (Monitor Serie 115200):
       t  → Tara
