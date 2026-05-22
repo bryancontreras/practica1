@@ -74,13 +74,12 @@ bool hx711Listo(unsigned long timeoutMs = 500) {
 }
 
 // ─────────────────────────────────────────────────────────
-// Mediana de N lecturas crudas (sin factor, sólo offset)
+// Mediana de N lecturas ya convertidas a unidades de peso
 float leerPesoMediana(int n = FILTRO_N) {
   float muestras[FILTRO_N];
   int nn = constrain(n, 1, FILTRO_N);
 
   for (int i = 0; i < nn; i++) {
-    // get_units ya descuenta offset y divide por factor
     muestras[i] = scale.get_units(1);
     delay(20);
   }
